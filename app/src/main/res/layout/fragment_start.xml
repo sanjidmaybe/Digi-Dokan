@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4EA651"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".views.starter.StartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bebas_neue"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:textColor="#2D336B"
+        android:gravity="center"
+        android:layout_margin="@dimen/_32sdp"
+        android:text="Welcome to Digi Dokan" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_32sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:fontFamily="@font/poppins_bold"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:text="LOGIN"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegister"
+        app:strokeColor="#2D336B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_32sdp"
+        android:fontFamily="@font/poppins_bold"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="Register"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
