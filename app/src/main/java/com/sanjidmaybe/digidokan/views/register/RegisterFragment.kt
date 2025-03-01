@@ -1,40 +1,67 @@
 package com.sanjidmaybe.digidokan.views.register
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sanjidmaybe.digidokan.R
+import com.sanjidmaybe.digidokan.base.BaseFragment
+import com.sanjidmaybe.digidokan.core.DataState
+import com.sanjidmaybe.digidokan.data.models.UserRegister
 import com.sanjidmaybe.digidokan.databinding.FragmentRegisterBinding
 import com.sanjidmaybe.digidokan.isEmpty
 
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
 
-    lateinit var binding: FragmentRegisterBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentRegisterBinding.inflate(inflater,container, false)
-        setListener()
-        return binding.root
-    }
+    private val viewModel: RegistrationViewModel by viewModels()
 
-    private fun setListener() {
+    override fun setListener() {
 
         with(binding){
-            btnRegister.setOnClickListener {
+            btnLogin.setOnClickListener {
                 etName.isEmpty()
                 etEmail.isEmpty()
                 etPassword.isEmpty()
 
                 if (!etName.isEmpty() && !etEmail.isEmpty() && !etPassword.isEmpty()){
-                    Toast.makeText(context, "All input Done!",Toast.LENGTH_LONG).show()
+
+                    val user = UserRegister(
+                        etName.text.toString(),
+                        etEmail.text.toString(),
+                        etPassword.text.toString(),
+                        "Seller",
+                        ""
+                    )
+                    viewModel.userRegistration(user)
+                    //Toast.makeText(context, "All input Done!",Toast.LENGTH_LONG).show()
+                }
+            }
+            btnRegister.setOnClickListener {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            }
+        }
+    }
+
+    override fun allObserver() {
+
+        registrationObserver()
+    }
+
+    private fun registrationObserver() {
+        viewModel.registrationResponse.observe(viewLifecycleOwner){
+            when(it){
+                is DataState.Error -> {
+                    loading.dismiss()
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Loading -> {
+                    loading.show()
+                    Toast.makeText(context, "Loading.", Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Success -> {
+                    loading.dismiss()
+                    Toast.makeText(context, "Created : ${it.data}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
