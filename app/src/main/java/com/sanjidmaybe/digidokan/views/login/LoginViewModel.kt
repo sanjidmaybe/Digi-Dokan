@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserLogin
 import com.sanjidmaybe.digidokan.data.repositories.AuthRepository
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel @Inject constructor(private val authService : AuthRepository ) : ViewModel() {
 
     private val _loginResponse = MutableLiveData<DataState<UserLogin>>()
 
@@ -15,8 +16,6 @@ class LoginViewModel : ViewModel() {
 
     fun userLogin(user: UserLogin) {
         _loginResponse.postValue(DataState.Loading())
-
-        val authService = AuthRepository()
 
         authService.userLogin(user).addOnSuccessListener {
             _loginResponse.postValue(DataState.Success(user))

@@ -4,7 +4,9 @@ import androidx.navigation.fragment.findNavController
 import com.sanjidmaybe.digidokan.R
 import com.sanjidmaybe.digidokan.base.BaseFragment
 import com.sanjidmaybe.digidokan.databinding.FragmentStartBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
 
 

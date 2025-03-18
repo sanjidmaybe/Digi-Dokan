@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.android.hilt.dagger)
+    kotlin("kapt")
 }
 
 android {
@@ -65,4 +67,7 @@ dependencies {
     //ssp/sdp
     implementation ("com.intuit.ssp:ssp-android:1.1.1")
     implementation ("com.intuit.sdp:sdp-android:1.1.1")
+
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.compiler)
 }

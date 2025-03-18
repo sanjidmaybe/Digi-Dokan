@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserRegister
 import com.sanjidmaybe.digidokan.data.repositories.AuthRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RegistrationViewModel :  ViewModel() {
+@HiltViewModel
+class RegistrationViewModel @Inject constructor(private val authService: AuthRepository) :  ViewModel() {
 
     private val _registrationResponse = MutableLiveData<DataState<UserRegister>>()
 
@@ -17,7 +20,6 @@ class RegistrationViewModel :  ViewModel() {
 
         _registrationResponse.postValue(DataState.Loading())
 
-        val authService = AuthRepository()
 
         authService.userRegistration(user)
             .addOnSuccessListener {
