@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".views.starter.StartFragment">
+
+    <ImageView
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome To Digi Dokan"
+        android:fontFamily="@font/bakbak_one"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:textColor="#2D336A"
+        android:layout_margin="@dimen/_32sdp"
+        android:gravity="center"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_32sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:text="LOGIN"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:textStyle="bold"
+        android:fontFamily="@font/bakbak_one"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_32sdp"
+        android:text="REGISTER"
+        app:strokeColor="#2D336A"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textStyle="bold"
+        android:fontFamily="@font/bakbak_one"/>
+
+</LinearLayout>

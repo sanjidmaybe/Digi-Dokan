@@ -1,10 +1,11 @@
-package com.sanjidmaybe.digidokan
+package com.sanjidmaybe.digidokan.views.starter
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.sanjidmaybe.digidokan.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

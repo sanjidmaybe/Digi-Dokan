@@ -17,6 +17,8 @@ firebaseStorage = "21.0.1"
 firebaseMessaging = "24.1.1"
 firebaseInappmessagingDisplay = "21.0.2"
 firebaseAnalytics = "22.4.0"
+navigationFragmentKtx = "2.8.9"
+navigationUiKtx = "2.8.9"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +36,8 @@ firebase-storage = { group = "com.google.firebase", name = "firebase-storage", v
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

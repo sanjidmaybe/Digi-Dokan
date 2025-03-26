@@ -53,7 +53,13 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.firebase.inappmessaging.display)
     implementation(libs.firebase.analytics)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //ssp-sdp
+    implementation ("com.intuit.ssp:ssp-android:1.1.1")
+    implementation ("com.intuit.sdp:sdp-android:1.1.1")
 }
