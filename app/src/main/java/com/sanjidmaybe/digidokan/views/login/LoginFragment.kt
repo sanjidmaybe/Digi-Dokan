@@ -9,31 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sanjidmaybe.digidokan.R
+import com.sanjidmaybe.digidokan.base.BaseFragment
 import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserLogin
 import com.sanjidmaybe.digidokan.databinding.FragmentLoginBinding
 import com.sanjidmaybe.digidokan.isEmpty
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    lateinit var binding: FragmentLoginBinding
     private val viewModel : LoginViewModel by viewModels ()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-        setListener()
-        loginObserver()
-        return binding.root
-    }
 
 
-
-    private fun setListener() {
+    override fun setListener() {
 
         with(binding) {
             btnLogin.setOnClickListener {
@@ -53,6 +41,10 @@ class LoginFragment : Fragment() {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
         }
+    }
+
+    override fun allObserver() {
+        loginObserver()
     }
 
     private fun loginObserver() {

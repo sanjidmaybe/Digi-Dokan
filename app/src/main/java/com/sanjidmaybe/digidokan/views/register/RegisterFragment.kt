@@ -1,39 +1,22 @@
 package com.sanjidmaybe.digidokan.views.register
 
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sanjidmaybe.digidokan.R
+import com.sanjidmaybe.digidokan.base.BaseFragment
 import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserRegister
 import com.sanjidmaybe.digidokan.databinding.FragmentRegisterBinding
 import com.sanjidmaybe.digidokan.isEmpty
 
-class RegisterFragment : Fragment() {
-    lateinit var binding: FragmentRegisterBinding
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
+
     private val viewModel: RegistrationViewModel by viewModels ()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-        setListener()
-        registrationObserver()
-        return binding.root
-    }
-
-    
-
-    private fun setListener() {
+    override fun setListener() {
 
         with (binding) {
             btnRegister.setOnClickListener {
@@ -60,17 +43,24 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun registrationObserver() {
+    override fun allObserver() {
+        registrationObserver()
+    }
+
+    fun registrationObserver() {
 
         viewModel.registrationResponse.observe (viewLifecycleOwner){
             when(it){
                 is DataState.Error<*> -> {
+                    loading.dismiss()
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Loading<*> -> {
+                    loading.show()
                     Toast.makeText(context, "Loading.", Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Success<*> -> {
+                    loading.dismiss()
                     Toast.makeText(context, "created User: ${it.data}", Toast.LENGTH_SHORT).show()
                 }
             }
