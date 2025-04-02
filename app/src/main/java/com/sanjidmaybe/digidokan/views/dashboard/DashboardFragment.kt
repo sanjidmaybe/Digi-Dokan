@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import com.sanjidmaybe.digidokan.R
 import com.sanjidmaybe.digidokan.base.BaseFragment
 import com.sanjidmaybe.digidokan.databinding.FragmentDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DashboardFragment : BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
 
 

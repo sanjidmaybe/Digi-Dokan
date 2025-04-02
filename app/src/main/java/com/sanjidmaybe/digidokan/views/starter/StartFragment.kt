@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.sanjidmaybe.digidokan.R
 import com.sanjidmaybe.digidokan.databinding.FragmentStartBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class StartFragment : Fragment() {
 
     lateinit var binding: FragmentStartBinding

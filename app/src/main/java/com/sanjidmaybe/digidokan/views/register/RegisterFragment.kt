@@ -10,7 +10,9 @@ import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserRegister
 import com.sanjidmaybe.digidokan.databinding.FragmentRegisterBinding
 import com.sanjidmaybe.digidokan.isEmpty
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
 
     private val viewModel: RegistrationViewModel by viewModels ()

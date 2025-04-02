@@ -14,7 +14,9 @@ import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserLogin
 import com.sanjidmaybe.digidokan.databinding.FragmentLoginBinding
 import com.sanjidmaybe.digidokan.isEmpty
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
     private val viewModel : LoginViewModel by viewModels ()
