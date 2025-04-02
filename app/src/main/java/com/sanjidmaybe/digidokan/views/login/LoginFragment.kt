@@ -1,5 +1,6 @@
 package com.sanjidmaybe.digidokan.views.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserLogin
 import com.sanjidmaybe.digidokan.databinding.FragmentLoginBinding
 import com.sanjidmaybe.digidokan.isEmpty
+import com.sanjidmaybe.digidokan.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,6 +62,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
                 is DataState.Success<*> -> {
                     Toast.makeText(context, "Logged in : ${it.data}", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                    requireActivity().finish()
                 }
             }
         }

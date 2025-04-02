@@ -7,8 +7,10 @@ import com.sanjidmaybe.digidokan.core.DataState
 import com.sanjidmaybe.digidokan.data.models.UserLogin
 import com.sanjidmaybe.digidokan.data.models.UserRegister
 import com.sanjidmaybe.digidokan.data.repositories.AuthRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class LoginViewModel @Inject constructor(private val authService: AuthRepository) : ViewModel() {
     private val _loginResponse = MutableLiveData<DataState<UserLogin>>()
     val loginResponse : LiveData<DataState<UserLogin>> = _loginResponse

@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.DigiDokan" parent="Base.Theme.DigiDokan" />
+    <style name="Theme.DigiDokan.App.Bar" parent="Theme.Material3.DayNight" />
 </resources>

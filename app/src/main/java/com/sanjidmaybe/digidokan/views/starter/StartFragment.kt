@@ -1,33 +1,20 @@
 package com.sanjidmaybe.digidokan.views.starter
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.content.Intent
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.sanjidmaybe.digidokan.R
+import com.sanjidmaybe.digidokan.base.BaseFragment
 import com.sanjidmaybe.digidokan.databinding.FragmentStartBinding
+import com.sanjidmaybe.digidokan.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StartFragment : Fragment() {
+class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding :: inflate) {
 
-    lateinit var binding: FragmentStartBinding
+    override fun setListener() {
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentStartBinding.inflate(inflater, container, false)
-
-        setListener()
-        return binding.root
-    }
-
-    private fun setListener() {
+        setUpAutoLogin()
 
         with (binding){
 
@@ -43,5 +30,21 @@ class StartFragment : Fragment() {
         }
 
     }
+
+    private fun setUpAutoLogin() {
+
+        FirebaseAuth.getInstance().currentUser?.let {
+
+            startActivity(Intent(requireContext(), SellerDashboard::class.java))
+            requireActivity().finish()
+        }
+
+    }
+
+    override fun allObserver() {
+
+    }
+
+
 
 }
